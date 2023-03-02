@@ -1,0 +1,30 @@
+.nav {
+  height: 80vh;
+  border-radius: 5px;
+  padding: 2em;
+  padding-top: 10px;
+  grid-area: n;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.3);
+  background: rgb(71, 160, 255);
+  background: linear-gradient(169deg, rgba(71, 160, 255, 1) 0%, rgba(141, 236, 255, 1) 100%);
+}
+
+.item {
+  font-size: large;
+  color: white;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.item:hover {
+  color: rgb(40, 92, 148);
+}
+
+.active {
+  font-size: large;
+  padding-left: 10px;
+  color: rgb(40, 92, 148);
+  ;
+  text-decoration: none;
+  transition: 0.2s;
+}

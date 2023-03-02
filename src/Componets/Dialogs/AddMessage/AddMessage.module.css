@@ -1,0 +1,38 @@
+.addMessage{
+    height: 4em;
+    grid-area: input;
+    display: grid;
+    grid-template: "text btn";
+    grid-template-columns: 1fr 100px;
+    gap: 1em;
+    align-items: center;
+}
+
+.addMessage textarea{
+    height: fit-content;
+    grid-area: text;
+    border: none;
+    background-color: rgb(255, 255, 255);
+    text-align: start;
+    font-size: large;
+    border-radius: 5px;
+    padding: 0.5em;
+    resize: none;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.3);
+  }
+
+  .addMessage textarea::first-line{
+    border: none;
+  }
+
+  .addMessage button{
+    height: 3em;
+    grid-area: btn;
+    border: none;
+    color: black;
+    padding: 0.5em;
+    width: 100px;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.3);
+  }

@@ -1,0 +1,11 @@
+  h1 {
+    color: rgb(40, 92, 148);
+  }
+
+  .posts {
+    padding: 1em;
+  }
+
+  .posts h1 {
+    font-weight: 500;
+  }

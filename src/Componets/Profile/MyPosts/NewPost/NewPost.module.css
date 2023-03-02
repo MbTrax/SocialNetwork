@@ -1,0 +1,32 @@
+  .newPost textarea{
+    border: none;
+    background-color: rgb(255, 255, 255);
+    text-align: start;
+    font-size: large;
+    border-radius: 5px;
+    grid-area: input;
+    padding: 1em;
+    resize: none;
+  }
+  
+  .newPost button{
+    grid-area: btn;
+    border: none;
+    color: black;
+    padding: 0.5em;
+    width: 100px;
+    border-radius: 5px;
+    background-color: white;
+  }
+  
+  .newPost{
+    display: grid;
+    grid-template-areas:
+    "input input"
+    "n btn";
+    grid-template-rows: 5em 2em;
+    grid-template-columns: 1fr 100px;
+    gap: 1em;
+    margin-bottom: 1em;
+  }
+ 
