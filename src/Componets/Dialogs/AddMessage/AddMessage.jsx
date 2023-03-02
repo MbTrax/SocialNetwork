@@ -1,17 +1,20 @@
 import React from "react";
+import { newMessageChangeCreater, sendMessageCreater } from "../../../redux/state";
 import c from './AddMessage.module.css'
 
 let AddMessage = (props) => {
-    let addMessageElement = React.createRef()
+    let onChangeNewMessage = (e) =>{
+        let text = e.target.value
+        props.store.dispatch(newMessageChangeCreater(text))
+    }
 
     let addMessage = () =>{
-        let text = addMessageElement.current.value
-        alert(text)
+        props.store.dispatch(sendMessageCreater())
     }
 
     return (
         <div className={c.addMessage}>
-            <textarea ref={addMessageElement} placeholder="Type message..."></textarea>
+            <textarea onChange={onChangeNewMessage} value = {props.store.getState().dialogsPage.nowTextMessage} placeholder="Type message..."></textarea>
             <button onClick = {addMessage}>Send</button>
         </div>
     )

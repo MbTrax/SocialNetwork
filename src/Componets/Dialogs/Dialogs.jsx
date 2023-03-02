@@ -29,7 +29,7 @@ let Dialogs = (props) => {
                     );
                 })}
             </div>
-            <AddMessage />
+            <AddMessage store = {props.store}/>
         </div>
     )
 }
