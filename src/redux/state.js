@@ -1,14 +1,11 @@
-const ADD_POST = 'ADD-POST'
-const NEW_POST_CHANGE = 'NEW-POST-CHANGE'
-const ADD_LIKE = 'ADD-LIKE'
-const SEND_MESSAGE = 'SEND-MESSAGE'
-const NEW_MESSAGE_CHANGE = 'NEW-MESSAGE-CHANGE'
+import profileReducer from './profileReducer'
+import dialogsReducer from './dialogsReducer'
 
 const store = {
-  _subcribe(){
+  _subcribe() {
     console.log('Not exsits subsribes')
   },
-  _state:{
+  _state: {
     profilePage: {
       newPostText: '',
       postsData: [
@@ -35,45 +32,22 @@ const store = {
     }
 
   },
-  getState(){
-      return this._state
+  getState() {
+    return this._state
   },
-  setSubscribe(observer){
+  setSubscribe(observer) {
     this._subcribe = observer
   }
   ,
-  dispatch(action){
-    if (action.type === ADD_POST){
-      let item = {
-        id: 5,
-        message: this._state.profilePage.newPostText,
-        likeCount: 0,
-        image: 'https://damion.club/uploads/posts/2022-03/1646255026_29-damion-club-p-anime-tyan-na-avu-v-stime-art-31.jpg'
-      }
-      this._state.profilePage.postsData.push(item)
-      this._state.profilePage.newPostText = ''
-      this._subcribe(this)
-    } else if (action.type === NEW_POST_CHANGE){
-      this._state.profilePage.newPostText = action.newText
-      this._subcribe(this)
-    } else if (action.type === ADD_LIKE){
-      this._state.profilePage.postsData.find(post => post.id === action.id).likeCount += 1
-      this._subcribe(this)
-    } else if (action.type === SEND_MESSAGE){
-      this._state.dialogsPage.messagesData.push({id: 6, message: this._state.dialogsPage.nowTextMessage})
-      this._state.dialogsPage.nowTextMessage = ''
-      this._subcribe(this)
-    } else if (action.type === NEW_MESSAGE_CHANGE){
-      this._state.dialogsPage.nowTextMessage = action.newText
-      this._subcribe(this)
-    }
+  dispatch(action) {
+    this._state.profilePage = profileReducer(this._state.profilePage, action)
+    this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
+
+    this._subcribe(this)
   }
 }
-export const sendMessageCreater = () => ({type: SEND_MESSAGE})
-export const newMessageChangeCreater = (text) => ({type: NEW_MESSAGE_CHANGE, newText: text})
 
-export const addPostActionCreater = () => ({type: ADD_POST})
-export const newPostChangeActionCreater = (text) => ({type: NEW_POST_CHANGE, newText: text})
-export const addLikeActionCreater = (id) => ({type: ADD_LIKE, id: id})
+
+
 window.state = store.getState()
 export default store

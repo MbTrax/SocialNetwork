@@ -1,5 +1,5 @@
 import React from "react";
-import { newMessageChangeCreater, sendMessageCreater } from "../../../redux/state";
+import { newMessageChangeCreater, sendMessageCreater } from "../../../redux/dialogsReducer";
 import c from './AddMessage.module.css'
 
 let AddMessage = (props) => {

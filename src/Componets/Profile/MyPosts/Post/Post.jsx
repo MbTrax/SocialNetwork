@@ -1,5 +1,5 @@
 import React from "react"
-import { addLikeActionCreater } from "../../../../redux/state"
+import { addLikeActionCreater } from "../../../../redux/profileReducer"
 import c from './Post.module.css'
 
 let Post = (props) => {
