@@ -5,7 +5,7 @@ import c from './Post.module.css'
 let Post = (props) => {
   
   let addLike = () => {
-    props.store.dispatch(addLikeActionCreater(props.id))
+    props.dispatch(addLikeActionCreater(props.id))
   }
 
   return (

@@ -19,8 +19,9 @@ let App = (props) => {
         <Nav />
         <div className={c.app_wrapper_content}>
           <Routes>
-            <Route path="/dialogs/*" element={<Dialogs store={props.store} />} />
-            <Route path="/profile/*" element={<Profile store={props.store}/>} />
+            <Route path="/dialogs/*" element={<Dialogs state={props.state} dispatch = {props.dispatch} />} />
+            <Route path="/profile/*" element={<Profile state={props.state} dispatch = {props.dispatch}/>} />
+            <Route path="/" element={<Profile state={props.state} dispatch = {props.dispatch}/>} />
             <Route path="/feed/*" element={<Feed />} />
             <Route path="/music/*" element={<Music />} />
             <Route path="/setings/*" element={<Setings />} />

@@ -4,20 +4,19 @@ import c from './NewPost.module.css'
 
 
 let NewPost = (props) => {
-
   let addPostElement = React.createRef();
 
   let addPost = () => {
-    props.store.dispatch(addPostActionCreater());
+    props.dispatch(addPostActionCreater());
   }
 
   let onPostChange = () => {
     let text = addPostElement.current.value;
-    props.store.dispatch(newPostChangeActionCreater(text));
+    props.dispatch(newPostChangeActionCreater(text));
   }
   return (
     <div className={c.newPost}>
-      <textarea ref={addPostElement} onChange={onPostChange} type='text' placeholder='your news...' value={props.store.getState().profilePage.newPostText} />
+      <textarea ref={addPostElement} onChange={onPostChange} type='text' placeholder='your news...' value={props.state.profilePage.newPostText} />
       <button onClick={addPost}>
         Send
       </button>

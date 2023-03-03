@@ -5,14 +5,13 @@ import c from './Dialogs.module.css'
 import AddMessage from "./AddMessage/AddMessage";
 
 let Dialogs = (props) => {
-    let state = props.store.getState().dialogsPage
     return (
         <div className={c.content}>
             <h1>Messages</h1>
 
             <div className={c.dialogs}>
 
-                {state.dialogsData.map(dialog => {
+                {props.state.dialogsPage.dialogsData.map(dialog => {
                     return (
                         <React.Fragment key={dialog.id}>
                             <Dialog name={dialog.name} id={dialog.id} />
@@ -21,7 +20,7 @@ let Dialogs = (props) => {
                 })}
             </div>
             <div className={c.messages}>
-                {state.messagesData.map(message => {
+                {props.state.dialogsPage.messagesData.map(message => {
                     return(
                         <React.Fragment key={message.id}>
                             <Message message={message.message} />
@@ -29,7 +28,7 @@ let Dialogs = (props) => {
                     );
                 })}
             </div>
-            <AddMessage store = {props.store}/>
+            <AddMessage state = {props.state} dispatch = {props.dispatch}/>
         </div>
     )
 }

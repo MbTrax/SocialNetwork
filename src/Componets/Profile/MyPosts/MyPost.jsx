@@ -9,11 +9,11 @@ let MyPost = (props) => {
       <h1>
         My Posts
       </h1>
-      <NewPost store = {props.store} />
-      {props.store.getState().profilePage.postsData.map(post => {
+      <NewPost state = {props.state} dispatch = {props.dispatch}/>
+      {props.state.profilePage.postsData.map(post => {
         return (
           <React.Fragment key={post.id}>
-            <Post message={post.message} likes={post.likeCount} image={post.image} id={post.id} store = {props.store}/>
+            <Post message={post.message} likes={post.likeCount} image={post.image} id={post.id} state = {props.state} dispatch = {props.dispatch}/>
           </React.Fragment>
         );
       })}
