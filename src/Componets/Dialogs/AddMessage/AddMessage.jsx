@@ -1,23 +1,26 @@
 import React from "react";
-import { newMessageChangeCreater, sendMessageCreater } from "../../../redux/dialogsReducer";
-import c from './AddMessage.module.css'
+import c from "./AddMessage.module.css";
 
 let AddMessage = (props) => {
-    let onChangeNewMessage = (e) =>{
-        let text = e.target.value
-        props.dispatch(newMessageChangeCreater(text))
-    }
+  let onChangeNewMessage = (e) => {
+    let text = e.target.value;
+    props.textMessageChange(text)
+  };
 
-    let addMessage = () =>{
-        props.dispatch(sendMessageCreater())
-    }
+  let addMessage = () => {
+    props.sendMessage()
+  };
 
-    return (
-        <div className={c.addMessage}>
-            <textarea onChange={onChangeNewMessage} value = {props.state.dialogsPage.nowTextMessage} placeholder="Type message..."></textarea>
-            <button onClick = {addMessage}>Send</button>
-        </div>
-    )
-}
+  return (
+    <div className={c.addMessage}>
+      <textarea
+        onChange={onChangeNewMessage}
+        value={props.nowText}
+        placeholder="Type message..."
+      ></textarea>
+      <button onClick={addMessage}>Send</button>
+    </div>
+  );
+};
 
-export default AddMessage
+export default AddMessage;
