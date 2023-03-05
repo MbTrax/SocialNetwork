@@ -1,50 +1,20 @@
-import React from "react";
-import Dialog from "./Dialog/Dialog";
-import Message from "./Message/Message";
-import {
-  newMessageChangeCreater,
-  sendMessageCreater,
-} from "../../redux/dialogsReducer";
 import Dialogs from "./Dialogs";
+import { connect } from "react-redux";
+import { newMessageChangeCreater, sendMessageCreater } from "../../redux/dialogsReducer";
 
-let DialogsContainer = (props) => {
-  let state = props.store.getState().dialogsPage;
+let mapStateToProps = (state) =>{
+  return{
+    dialogsPage : state.dialogsPage
+  }
+}
 
-  let sendMessage = () => {
-    props.dispatch(sendMessageCreater());
-  };
+let mapDispatchToProps = (dispatch) =>{
+  return{
+    sendMessage : () => {dispatch(sendMessageCreater())},
+    textMessageChange : (text) => dispatch(newMessageChangeCreater(text))
+  }
+}
 
-  let textMessageChange = (text) => {
-    props.dispatch(newMessageChangeCreater(text));
-  };
-
-  let nowText = state.nowTextMessage;
-
-  let dialogs = state.dialogsData.map((dialog) => {
-    return (
-      <React.Fragment key={dialog.id}>
-        <Dialog name={dialog.name} id={dialog.id} />
-      </React.Fragment>
-    );
-  });
-
-  let messages = state.messagesData.map((message) => {
-    return (
-      <React.Fragment key={message.id}>
-        <Message message={message.message} />
-      </React.Fragment>
-    );
-  });
-
-  return (
-    <Dialogs
-      dialogs={dialogs}
-      messages={messages}
-      sendMessage={sendMessage}
-      textMessageChange={textMessageChange}
-      nowText={nowText}
-    />
-  );
-};
+let DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs)
 
 export default DialogsContainer;
